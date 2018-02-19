@@ -43,11 +43,14 @@ def contact():
         if form.validate_on_submit():   
             msg	=	Message(form.subject.data, sender=(form.name.data,form.email.data),
             recipients=["to@example.com"])
-            msg.body = form.textarea.data 
+            msg.body = form.message.data 
             mail.send(msg)  
             flash('email successfully sent')
-            return redirect('/') 
-           
+            return redirect('/')  
+        # What happens when the validation fails? What do you load? (YL) 
+        else: 
+            flash('error: sending of email failed')  
+            return redirect('/contact') 
     else:  
             return render_template('contact.html', form=form)
             
