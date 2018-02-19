@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>  
+    
+    <h1>Contact Form</h1> 
+    <hr> 
+    
+    <p>Fill in this form to contact the site owners.</p> 
+    
+    <form action="{{ url_for('contact')}}" method="post"> 
+    {{ form.csrf_token }}
+    
+    {{ form.name.label }}
+    {{ form.name }}
+ 
+    {{ form.email.label }}
+    {{ form.email }}
+ 
+    {{ form.subject.label }}
+    {{ form.subject }}
+ 
+    {{ form.message.label }}
+    {{ form.message }}
+ 
+    {{ form.submit }}
+    </form>
+    
+</body>    
+</html>

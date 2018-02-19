@@ -5,9 +5,11 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
 
-from app import app
+from app import app 
+from app import mail 
+from flask_mail import Message
 from flask import render_template, request, redirect, url_for, flash
-
+from forms import MyForm 
 
 ###
 # Routing for your application.
@@ -35,6 +37,23 @@ def send_text_file(file_name):
     file_dot_text = file_name + '.txt'
     return app.send_static_file(file_dot_text)
 
+@app.route('/contact', methods=('POST')) 
+def contact(): 
+    form=MyForm()
+    if request.method == 'POST': 
+        if form.validate_on_submit():   
+            msg	=	Message(form.subject.data, sender=(form.name.data,form.email.data),
+            recipients=["to@example.com"])
+            msg.body = form.textarea.data 
+            mail.send(msg)  
+            flash('email successfully sent')
+            return redirect('/') 
+           
+        else: 
+            return render_template('contact.html', form=form)
+            
+            
+            
 
 @app.after_request
 def add_header(response):
@@ -52,7 +71,6 @@ def add_header(response):
 def page_not_found(error):
     """Custom 404 page."""
     return render_template('404.html'), 404
-
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port="8080")
