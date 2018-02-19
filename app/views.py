@@ -36,7 +36,7 @@ def send_text_file(file_name):
     file_dot_text = file_name + '.txt'
     return app.send_static_file(file_dot_text)
 
-@app.route('/contact', methods=('POST')) 
+@app.route('/contact', methods=['GET' ,'POST']) 
 def contact(): 
     form=MyForm()
     if request.method == 'POST': 
@@ -48,7 +48,7 @@ def contact():
             flash('email successfully sent')
             return redirect('/') 
            
-        else: 
+    else:  
             return render_template('contact.html', form=form)
             
             
