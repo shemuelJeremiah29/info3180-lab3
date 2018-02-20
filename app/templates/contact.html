@@ -10,16 +10,16 @@
     <form action="{{ url_for('contact')}}" method="post"> 
     {{ form.csrf_token }}
     
-    {{ form.name.label }}
+    <h3>{{ form.name.label }}</h3>
     {{ form.name }}
  
-    {{ form.email.label }}
+    <h3>{{ form.email.label }}</h3>
     {{ form.email }}
  
-    {{ form.subject.label }}
+    <h3>{{ form.subject.label }}</h3>
     {{ form.subject }}
  
-    {{ form.message.label }}
+    <h3>{{ form.message.label }}</h3>
     {{ form.message }}
  
     {{ form.submit }}

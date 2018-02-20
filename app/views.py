@@ -47,11 +47,11 @@ def contact():
             mail.send(msg)  
             flash('email successfully sent')
             return redirect('/')  
-        # What happens when the validation fails? What do you load? (YL) 
         else: 
             flash('error: sending of email failed')  
             return redirect('/contact') 
     else:  
+            flash('Request Method Invalid')
             return render_template('contact.html', form=form)
             
             
