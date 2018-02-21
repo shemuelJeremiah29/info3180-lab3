@@ -3,10 +3,9 @@ from wtforms import StringField , validators, SubmitField, TextAreaField
 from wtforms.validators import DataRequired
 
 class MyForm(FlaskForm): 
-    name = StringField('name', validators =[validators.Length(min=8, max=25),DataRequired()]) 
-    email = StringField ('email', validators=[validators.Length(min=8, max=35), DataRequired()]) 
-    address=StringField('address', validators=[validators.Length(min=12, max=255),DataRequired()]) 
-    subject=StringField('subject', validators=[validators.Length(min=12, max=80),DataRequired()]) 
-    message=TextAreaField('message', validators=[validators.Length(min=1, max=5000), DataRequired()]) 
+    name = StringField('name', validators =[DataRequired()]) 
+    email = StringField ('email', validators=[ DataRequired()]) 
+    subject=StringField('subject', validators=[DataRequired()]) 
+    message=TextAreaField('message', validators=[DataRequired()]) 
     submit = SubmitField('Send') 
     

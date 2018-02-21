@@ -8,7 +8,8 @@ from app import app
 from app import mail 
 from flask_mail import Message
 from flask import render_template, request, redirect, url_for, flash
-from forms import MyForm 
+from forms import MyForm  
+
 
 ###
 # Routing for your application.
@@ -51,12 +52,10 @@ def contact():
             flash('error: sending of email failed')  
             return redirect('/contact') 
     else:  
-            flash('Request Method Invalid')
-            return render_template('contact.html', form=form)
+            return render_template('contact.html',form=form )
             
             
             
-
 @app.after_request
 def add_header(response):
     """

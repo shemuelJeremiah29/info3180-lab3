@@ -3,11 +3,11 @@ from flask_mail import Mail
 app = Flask(__name__)
 
 
-app.config['SECRET_KEY']= 'enter some random passphrase'
+app.config['SECRET_KEY']= 'cram5'
 app.config['MAIL_SERVER']= 'smtp.mailtrap.io' 
-app.config['MAIL_PORT']= '465' 
-app.config['MAIL_USERNAME']='enter your mailtrap username' 
-app.config['MAIL_PASSWORD']='enter your mailtrap password' 
+app.config['MAIL_PORT']= '2525' 
+app.config['MAIL_USERNAME']='081cd2652998d9' 
+app.config['MAIL_PASSWORD']='ab232ea8ed7960' 
 
 mail= Mail(app) 
 from app import views  
